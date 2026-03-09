@@ -25,7 +25,6 @@ export default function Footer() {
     { name: 'Nosotros', href: '/nosotros' },
     { name: 'Equipo', href: '/equipo' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contacto', href: '/contacto' },
   ]
 
   return (
@@ -93,7 +92,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>Av. Principal 123, Ciudad de México</span>
+                <span>Antofagasta, Chile</span>
               </li>
               <li className="flex items-center">
                 <svg
@@ -109,7 +108,7 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>+52 55 1234 5678</span>
+                <span>+56954555444</span>
               </li>
               <li className="flex items-center">
                 <svg
@@ -135,8 +134,10 @@ export default function Footer() {
         <div className="border-t border-navy-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             {/* Copyright dinámico */}
-            <p>© {currentYear} Estudio Jurídico. Todos los derechos reservados.</p>
+            <p> Dev Bernardo Morales © {currentYear}. Todos los derechos reservados.</p>
+
             {/* Enlaces a políticas legales */}
+            {/*
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacidad" className="hover:text-gold-500 transition-colors duration-200">
                 Política de Privacidad
@@ -145,6 +146,7 @@ export default function Footer() {
                 Términos y Condiciones
               </Link>
             </div>
+            */}
           </div>
         </div>
       </div>

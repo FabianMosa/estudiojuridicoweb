@@ -38,7 +38,7 @@ export default function Contacto() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     // Simulación de envío del formulario (aquí iría la lógica real de envío)
     setTimeout(() => {
       setSubmitMessage('¡Gracias por contactarnos! Le responderemos en breve.')
@@ -50,7 +50,7 @@ export default function Contacto() {
         asunto: '',
         mensaje: '',
       })
-      
+
       setTimeout(() => {
         setSubmitMessage('')
       }, 5000)
@@ -96,9 +96,8 @@ export default function Contacto() {
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Dirección</h3>
                     <p className="text-gray-600">
-                      Av. Principal 123<br />
-                      Col. Centro<br />
-                      Ciudad de México, 06000
+
+                      Antofagasta
                     </p>
                   </div>
                 </div>
@@ -111,8 +110,8 @@ export default function Contacto() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy-900 mb-1">Teléfono</h3>
-                    <p className="text-gray-600">+52 55 1234 5678</p>
-                    <p className="text-gray-600">+52 55 8765 4321</p>
+                    <p className="text-gray-600">+56954555444</p>
+
                   </div>
                 </div>
 
@@ -153,7 +152,7 @@ export default function Contacto() {
                   <div>
                     <p className="text-sm font-medium text-gray-900">Urgencias 24/7</p>
                     <p className="text-sm text-gray-700 mt-1">
-                      Para emergencias legales fuera de horario, llame al +52 55 9999 0000
+                      Para emergencias legales fuera de horario, llame al +56954555444
                     </p>
                   </div>
                 </div>
@@ -223,7 +222,7 @@ export default function Contacto() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-navy-500 focus:border-navy-500 transition-colors"
-                        placeholder="+52 55 1234 5678"
+                        placeholder="+56954555444"
                       />
                     </div>
                   </div>
@@ -280,7 +279,7 @@ export default function Contacto() {
 
                   {/* Nota sobre privacidad */}
                   <p className="text-sm text-gray-600 text-center">
-                    Al enviar este formulario, acepta nuestra política de privacidad y 
+                    Al enviar este formulario, acepta nuestra política de privacidad y
                     el tratamiento confidencial de su información.
                   </p>
                 </form>
@@ -291,6 +290,7 @@ export default function Contacto() {
       </section>
 
       {/* Mapa de ubicación de Google Maps */}
+      {/*
       <section className="h-96 bg-gray-200">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6956098274787!2d-99.16615908509477!3d19.432607986886183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92f6c5b7c5d%3A0x4b1e5f0c3b5b5b0!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1234567890"
@@ -303,6 +303,7 @@ export default function Contacto() {
           title="Ubicación del Estudio Jurídico"
         />
       </section>
+      */}
     </div>
   )
 }

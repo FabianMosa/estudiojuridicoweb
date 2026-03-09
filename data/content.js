@@ -71,36 +71,7 @@ export const practiceAreas = [
       'Negociaciones colectivas',
     ],
   },
-  {
-    slug: 'derecho-fiscal',
-    title: 'Derecho Fiscal',
-    description: 'Planificación fiscal, controversias tributarias y asesoría en cumplimiento.',
-    icon: 'calculator',
-    fullDescription: 'Ayudamos a empresas y personas físicas a cumplir con sus obligaciones fiscales de manera eficiente y a resolver controversias con las autoridades tributarias.',
-    services: [
-      'Planificación y optimización fiscal',
-      'Defensa en auditorías',
-      'Litigio fiscal',
-      'Precios de transferencia',
-      'Impuestos internacionales',
-      'Compliance fiscal',
-    ],
-  },
-  {
-    slug: 'propiedad-intelectual',
-    title: 'Propiedad Intelectual',
-    description: 'Protección de marcas, patentes, derechos de autor y secretos industriales.',
-    icon: 'lightbulb',
-    fullDescription: 'Protegemos sus activos intangibles más valiosos. Nuestro equipo especializado garantiza la defensa efectiva de su propiedad intelectual.',
-    services: [
-      'Registro de marcas y patentes',
-      'Derechos de autor',
-      'Licencias y transferencia de tecnología',
-      'Litigio en PI',
-      'Competencia desleal',
-      'Nombres de dominio',
-    ],
-  },
+
 ]
 
 /**
