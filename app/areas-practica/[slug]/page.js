@@ -1,13 +1,23 @@
+/**
+ * Página de Detalle de Área de Práctica
+ * 
+ * Muestra información detallada de un área de práctica específica.
+ * Incluye descripción completa, lista de servicios, razones para elegir al estudio
+ * y CTA para agendar consulta. Genera rutas estáticas para cada área.
+ */
+
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { practiceAreas } from '@/data/content'
 
+// Genera las rutas estáticas para cada área de práctica
 export async function generateStaticParams() {
   return practiceAreas.map((area) => ({
     slug: area.slug,
   }))
 }
 
+// Genera metadatos dinámicos para SEO según el área
 export async function generateMetadata({ params }) {
   const area = practiceAreas.find((a) => a.slug === params.slug)
   
@@ -24,15 +34,17 @@ export async function generateMetadata({ params }) {
 }
 
 export default function PracticeAreaDetail({ params }) {
+  // Busca el área de práctica por slug en la URL
   const area = practiceAreas.find((a) => a.slug === params.slug)
 
+  // Si no se encuentra, muestra página 404
   if (!area) {
     notFound()
   }
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Sección hero con título y breadcrumb */}
       <section className="relative bg-navy-900 text-white py-20">
         <div className="container-custom">
           <div className="max-w-4xl">
@@ -55,11 +67,11 @@ export default function PracticeAreaDetail({ params }) {
         </div>
       </section>
 
-      {/* Content */}
+      {/* Contenido principal del área */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            {/* Description */}
+            {/* Descripción completa */}
             <div className="mb-12">
               <h2 className="text-3xl font-serif font-bold text-navy-900 mb-6">
                 Descripción
@@ -69,7 +81,7 @@ export default function PracticeAreaDetail({ params }) {
               </p>
             </div>
 
-            {/* Services */}
+            {/* Lista de servicios específicos del área */}
             <div className="mb-12">
               <h2 className="text-3xl font-serif font-bold text-navy-900 mb-6">
                 Nuestros Servicios
@@ -86,7 +98,7 @@ export default function PracticeAreaDetail({ params }) {
               </div>
             </div>
 
-            {/* Why Choose Us */}
+            {/* Sección "Por qué elegirnos" con beneficios */}
             <div className="bg-navy-900 text-white p-8 md:p-12 rounded-lg">
               <h2 className="text-3xl font-serif font-bold mb-6">
                 ¿Por Qué Elegirnos?
@@ -150,7 +162,7 @@ export default function PracticeAreaDetail({ params }) {
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA final para agendar consulta */}
             <div className="mt-12 text-center">
               <h3 className="text-2xl font-serif font-bold text-navy-900 mb-4">
                 ¿Necesita Asesoría en {area.title}?

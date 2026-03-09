@@ -1,8 +1,18 @@
+/**
+ * Componente Footer (Pie de Página)
+ * 
+ * Pie de página del sitio web con información corporativa, enlaces rápidos,
+ * áreas de práctica y datos de contacto. Se muestra en todas las páginas.
+ * Incluye copyright dinámico y enlaces a políticas legales.
+ */
+
 import Link from 'next/link'
 
 export default function Footer() {
+  // Obtiene el año actual dinámicamente
   const currentYear = new Date().getFullYear()
 
+  // Enlaces a las principales áreas de práctica
   const practiceAreas = [
     { name: 'Derecho Corporativo', href: '/areas-practica/derecho-corporativo' },
     { name: 'Derecho Civil', href: '/areas-practica/derecho-civil' },
@@ -10,6 +20,7 @@ export default function Footer() {
     { name: 'Derecho Laboral', href: '/areas-practica/derecho-laboral' },
   ]
 
+  // Enlaces de navegación rápida
   const quickLinks = [
     { name: 'Nosotros', href: '/nosotros' },
     { name: 'Equipo', href: '/equipo' },
@@ -21,7 +32,7 @@ export default function Footer() {
     <footer className="bg-navy-900 text-gray-300">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* About */}
+          {/* Columna 1: Sobre el estudio */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-navy-600 rounded flex items-center justify-center">
@@ -37,26 +48,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Practice Areas */}
-          <div>
-            <h3 className="text-white font-serif font-bold text-lg mb-4">
-              Áreas de Práctica
-            </h3>
-            <ul className="space-y-2">
-              {practiceAreas.map((area) => (
-                <li key={area.name}>
-                  <Link
-                    href={area.href}
-                    className="text-sm hover:text-gold-500 transition-colors duration-200"
-                  >
-                    {area.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
+          {/* Columna 2: Enlaces rápidos */}
           <div>
             <h3 className="text-white font-serif font-bold text-lg mb-4">
               Enlaces Rápidos
@@ -75,7 +67,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Columna 3: Información de contacto */}
           <div>
             <h3 className="text-white font-serif font-bold text-lg mb-4">
               Contacto
@@ -139,10 +131,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Barra inferior con copyright y enlaces legales */}
         <div className="border-t border-navy-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+            {/* Copyright dinámico */}
             <p>© {currentYear} Estudio Jurídico. Todos los derechos reservados.</p>
+            {/* Enlaces a políticas legales */}
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacidad" className="hover:text-gold-500 transition-colors duration-200">
                 Política de Privacidad

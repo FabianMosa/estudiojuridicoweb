@@ -1,11 +1,21 @@
+/**
+ * Componente de Barra de Navegación
+ * 
+ * Barra de navegación responsive con menú desplegable para dispositivos móviles.
+ * Incluye logo, enlaces de navegación y botón de llamada a la acción.
+ * Se mantiene fija en la parte superior al hacer scroll (sticky).
+ */
+
 'use client'
 
 import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Navbar() {
+  // Estado para controlar la apertura/cierre del menú móvil
   const [isOpen, setIsOpen] = useState(false)
 
+  // Definición de los enlaces de navegación principal
   const navigation = [
     { name: 'Inicio', href: '/' },
     { name: 'Nosotros', href: '/nosotros' },
@@ -19,7 +29,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container-custom">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
+          {/* Logo del estudio jurídico */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-navy-600 rounded flex items-center justify-center">
               <span className="text-gold-500 text-2xl font-serif font-bold">L</span>
@@ -29,7 +39,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Menú de navegación para escritorio (oculto en móvil) */}
           <div className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
@@ -40,12 +50,13 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+            {/* Botón CTA destacado */}
             <Link href="/contacto" className="btn-primary">
               Consulta Gratuita
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Botón hamburguesa para abrir/cerrar menú móvil */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-md text-gray-700 hover:text-navy-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-navy-500"
@@ -76,7 +87,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Menú móvil desplegable (visible solo cuando isOpen es true) */}
         {isOpen && (
           <div className="lg:hidden pb-4">
             <div className="flex flex-col space-y-3">

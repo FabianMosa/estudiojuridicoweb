@@ -1,8 +1,12 @@
 {
+  /**
+   * Configuración del compilador JavaScript/TypeScript
+   * Define alias de importación para rutas más limpias
+   */
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": ".", // Directorio base para resolución de rutas
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"] // Alias @ apunta a la raíz del proyecto
     }
   }
 }

@@ -1,5 +1,14 @@
+/**
+ * Página "Sobre Nosotros"
+ * 
+ * Presenta la historia, misión, visión y valores del estudio jurídico.
+ * Incluye sección hero, historia con imagen, misión/visión en tarjetas,
+ * valores corporativos y CTA para conocer al equipo.
+ */
+
 import Link from 'next/link'
 
+// Metadatos SEO específicos de esta página
 export const metadata = {
   title: 'Nosotros | Estudio Jurídico',
   description: 'Conoce nuestra historia, misión y valores que nos han convertido en una firma de abogados de referencia.',
@@ -8,7 +17,7 @@ export const metadata = {
 export default function Nosotros() {
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Sección hero con título y descripción */}
       <section className="relative bg-navy-900 text-white py-20">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -22,7 +31,7 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* Historia */}
+      {/* Sección de historia del estudio con texto e imagen */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -61,7 +70,7 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* Misión y Visión */}
+      {/* Sección de Misión y Visión en tarjetas lado a lado */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -99,7 +108,7 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* Valores */}
+      {/* Sección de valores corporativos con íconos */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -111,6 +120,7 @@ export default function Nosotros() {
             </p>
           </div>
 
+          {/* Grid de valores con íconos y descripciones */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
@@ -148,7 +158,7 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA para conocer al equipo */}
       <section className="section-padding bg-navy-900 text-white">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">

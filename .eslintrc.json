@@ -1,6 +1,11 @@
 {
-  "extends": "next/core-web-vitals",
+  /**
+   * Configuración de ESLint para Next.js
+   * Reglas de linting personalizadas
+   */
+  "extends": "next/core-web-vitals", // Hereda configuración estándar de Next.js
   "rules": {
+    // Desactiva la advertencia de usar <img> en lugar de <Image/>
     "@next/next/no-img-element": "off"
   }
 }

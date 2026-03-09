@@ -1,7 +1,16 @@
+/**
+ * Página de Blog
+ * 
+ * Muestra todos los artículos del blog en un grid de tarjetas.
+ * Cada artículo incluye imagen, categoría, fecha, título, extracto y autor.
+ * Incluye también un formulario de suscripción al newsletter.
+ */
+
 import Link from 'next/link'
 import { blogPosts } from '@/data/content'
 import { formatDate } from '@/lib/utils'
 
+// Metadatos SEO específicos de esta página
 export const metadata = {
   title: 'Blog | Estudio Jurídico',
   description: 'Artículos y análisis legal de nuestros expertos.',
@@ -10,7 +19,7 @@ export const metadata = {
 export default function Blog() {
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Sección hero con título */}
       <section className="relative bg-navy-900 text-white py-20">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -24,7 +33,7 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Blog Posts */}
+      {/* Grid de artículos del blog */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -72,7 +81,7 @@ export default function Blog() {
             ))}
           </div>
 
-          {/* Newsletter CTA */}
+          {/* CTA de suscripción al newsletter */}
           <div className="mt-16 bg-navy-900 text-white p-12 rounded-lg text-center">
             <h2 className="text-3xl font-serif font-bold mb-4">
               Suscríbase a Nuestro Newsletter

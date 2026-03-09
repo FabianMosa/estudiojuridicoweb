@@ -1,8 +1,18 @@
+/**
+ * Página de Contacto
+ * 
+ * Formulario de contacto completo con información de la oficina.
+ * Incluye campos para nombre, email, teléfono, asunto y mensaje.
+ * Muestra información de contacto (dirección, teléfono, email, horario)
+ * y mapa de ubicación integrado de Google Maps.
+ */
+
 'use client'
 
 import { useState } from 'react'
 
 export default function Contacto() {
+  // Estado para almacenar los valores del formulario
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -11,9 +21,12 @@ export default function Contacto() {
     mensaje: '',
   })
 
+  // Estado para controlar el envío del formulario
   const [isSubmitting, setIsSubmitting] = useState(false)
+  // Estado para mostrar mensaje de confirmación
   const [submitMessage, setSubmitMessage] = useState('')
 
+  // Manejador de cambios en los inputs
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,11 +34,12 @@ export default function Contacto() {
     })
   }
 
+  // Manejador del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
+    // Simulación de envío del formulario (aquí iría la lógica real de envío)
     setTimeout(() => {
       setSubmitMessage('¡Gracias por contactarnos! Le responderemos en breve.')
       setIsSubmitting(false)
@@ -45,7 +59,7 @@ export default function Contacto() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Sección hero con título */}
       <section className="relative bg-navy-900 text-white py-20">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -59,17 +73,19 @@ export default function Contacto() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Sección principal: información de contacto y formulario */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
+            {/* Columna izquierda: Información de contacto */}
             <div className="lg:col-span-1">
               <h2 className="text-2xl font-serif font-bold text-navy-900 mb-6">
                 Información de Contacto
               </h2>
 
+              {/* Lista de métodos de contacto */}
               <div className="space-y-6">
+                {/* Dirección física */}
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                     <svg className="w-6 h-6 text-navy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +144,7 @@ export default function Contacto() {
                 </div>
               </div>
 
-              {/* Emergency Notice */}
+              {/* Aviso de urgencias 24/7 */}
               <div className="mt-8 bg-gold-50 border-l-4 border-gold-500 p-4 rounded">
                 <div className="flex items-start">
                   <svg className="w-5 h-5 text-gold-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -144,20 +160,23 @@ export default function Contacto() {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Columna derecha: Formulario de contacto */}
             <div className="lg:col-span-2">
               <div className="bg-gray-50 p-8 rounded-lg">
                 <h2 className="text-2xl font-serif font-bold text-navy-900 mb-6">
                   Envíenos un Mensaje
                 </h2>
 
+                {/* Mensaje de confirmación de envío */}
                 {submitMessage && (
                   <div className="mb-6 bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded">
                     {submitMessage}
                   </div>
                 )}
 
+                {/* Formulario con campos de entrada */}
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Campo: Nombre completo */}
                   <div>
                     <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-2">
                       Nombre Completo *
@@ -174,6 +193,7 @@ export default function Contacto() {
                     />
                   </div>
 
+                  {/* Campos: Email y Teléfono (en grid de 2 columnas) */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -208,6 +228,7 @@ export default function Contacto() {
                     </div>
                   </div>
 
+                  {/* Campo: Asunto (selector) */}
                   <div>
                     <label htmlFor="asunto" className="block text-sm font-medium text-gray-700 mb-2">
                       Asunto *
@@ -231,6 +252,7 @@ export default function Contacto() {
                     </select>
                   </div>
 
+                  {/* Campo: Mensaje (área de texto) */}
                   <div>
                     <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-2">
                       Mensaje *
@@ -247,6 +269,7 @@ export default function Contacto() {
                     />
                   </div>
 
+                  {/* Botón de envío */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -255,6 +278,7 @@ export default function Contacto() {
                     {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                   </button>
 
+                  {/* Nota sobre privacidad */}
                   <p className="text-sm text-gray-600 text-center">
                     Al enviar este formulario, acepta nuestra política de privacidad y 
                     el tratamiento confidencial de su información.
@@ -266,7 +290,7 @@ export default function Contacto() {
         </div>
       </section>
 
-      {/* Map */}
+      {/* Mapa de ubicación de Google Maps */}
       <section className="h-96 bg-gray-200">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6956098274787!2d-99.16615908509477!3d19.432607986886183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92f6c5b7c5d%3A0x4b1e5f0c3b5b5b0!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1234567890"

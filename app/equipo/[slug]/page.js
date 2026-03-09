@@ -1,13 +1,23 @@
+/**
+ * Página de Perfil Individual del Miembro del Equipo
+ * 
+ * Muestra información detallada de un abogado específico incluyendo:
+ * biografía, formación académica, publicaciones y datos de contacto.
+ * Genera rutas estáticas para cada miembro del equipo.
+ */
+
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { teamMembers } from '@/data/content'
 
+// Genera las rutas estáticas para cada miembro del equipo
 export async function generateStaticParams() {
   return teamMembers.map((member) => ({
     slug: member.slug,
   }))
 }
 
+// Genera metadatos dinámicos para SEO según el miembro
 export async function generateMetadata({ params }) {
   const member = teamMembers.find((m) => m.slug === params.slug)
   
@@ -24,8 +34,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default function MemberProfile({ params }) {
+  // Busca el miembro por slug en la URL
   const member = teamMembers.find((m) => m.slug === params.slug)
 
+  // Si no se encuentra, muestra página 404
   if (!member) {
     notFound()
   }
@@ -35,7 +47,7 @@ export default function MemberProfile({ params }) {
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
-            {/* Back Button */}
+            {/* Botón para volver a la página del equipo */}
             <Link
               href="/equipo"
               className="inline-flex items-center text-navy-600 hover:text-navy-800 mb-8 transition-colors"
@@ -47,7 +59,7 @@ export default function MemberProfile({ params }) {
             </Link>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Profile Image */}
+              {/* Columna izquierda: Imagen y contacto */}
               <div className="lg:col-span-1">
                 <div className="sticky top-24">
                   <img
@@ -70,14 +82,14 @@ export default function MemberProfile({ params }) {
                 </div>
               </div>
 
-              {/* Profile Content */}
+              {/* Columna derecha: Información detallada */}
               <div className="lg:col-span-2">
                 <h1 className="text-4xl font-serif font-bold text-navy-900 mb-2">
                   {member.name}
                 </h1>
                 <p className="text-xl text-gray-600 mb-8">{member.position}</p>
 
-                {/* Bio */}
+                {/* Sección de biografía */}
                 <div className="mb-8">
                   <h2 className="text-2xl font-serif font-bold text-navy-900 mb-4">
                     Biografía
@@ -85,7 +97,7 @@ export default function MemberProfile({ params }) {
                   <p className="text-gray-700 leading-relaxed">{member.bio}</p>
                 </div>
 
-                {/* Education */}
+                {/* Sección de formación académica */}
                 <div className="mb-8">
                   <h2 className="text-2xl font-serif font-bold text-navy-900 mb-4">
                     Formación Académica
@@ -102,7 +114,7 @@ export default function MemberProfile({ params }) {
                   </ul>
                 </div>
 
-                {/* Publications */}
+                {/* Sección de publicaciones (si tiene) */}
                 {member.publications.length > 0 && (
                   <div className="mb-8">
                     <h2 className="text-2xl font-serif font-bold text-navy-900 mb-4">
@@ -121,7 +133,7 @@ export default function MemberProfile({ params }) {
                   </div>
                 )}
 
-                {/* CTA */}
+                {/* CTA para agendar consulta */}
                 <div className="bg-navy-900 text-white p-8 rounded-lg mt-8">
                   <h3 className="text-2xl font-serif font-bold mb-4">
                     ¿Necesita Asesoría Legal?

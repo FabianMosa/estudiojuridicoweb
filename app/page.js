@@ -1,3 +1,11 @@
+/**
+ * Página de Inicio (Home)
+ * 
+ * Esta es la landing page principal del sitio web del estudio jurídico.
+ * Incluye las secciones más importantes: héroe, áreas de práctica, razones para elegirnos,
+ * testimonios de clientes y llamada a la acción.
+ */
+
 import Hero from '@/components/sections/Hero'
 import PracticeAreas from '@/components/sections/PracticeAreas'
 import Testimonials from '@/components/sections/Testimonials'
@@ -6,10 +14,13 @@ import CTA from '@/components/sections/CTA'
 export default function Home() {
   return (
     <>
+      {/* Sección héroe con mensaje principal y estadísticas */}
       <Hero />
+      
+      {/* Sección de áreas de práctica legal */}
       <PracticeAreas />
       
-      {/* Why Choose Us */}
+      {/* Sección "Por Qué Elegirnos" - Destacando ventajas competitivas */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -23,7 +34,9 @@ export default function Home() {
                 con un enfoque personalizado y resultados comprobados.
               </p>
               
+              {/* Lista de beneficios con íconos */}
               <div className="space-y-6">
+                {/* Beneficio: Experiencia */}
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center text-navy-600">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,6 +61,7 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Beneficio: Atención Personalizada */}
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center text-navy-600">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,6 +74,7 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Beneficio: Resultados Rápidos */}
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center text-navy-600">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,6 +89,7 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Imagen decorativa con estadística destacada */}
             <div className="relative">
               <div className="aspect-[4/3] bg-gradient-to-br from-navy-100 to-navy-50 rounded-lg overflow-hidden">
                 <img
@@ -82,6 +98,7 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </div>
+              {/* Badge flotante con tasa de éxito */}
               <div className="absolute -bottom-6 -left-6 bg-gold-500 text-white p-6 rounded-lg shadow-xl">
                 <div className="text-3xl font-serif font-bold">95%</div>
                 <div className="text-sm">Casos Exitosos</div>
@@ -91,7 +108,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sección de testimonios de clientes satisfechos */}
       <Testimonials />
+      
+      {/* Llamada a la acción final para agendar consulta */}
       <CTA />
     </>
   )

@@ -1,3 +1,11 @@
+/**
+ * Componente Call-to-Action (Llamada a la Acción)
+ * 
+ * Sección final que invita a los visitantes a contactar al estudio.
+ * Incluye botones para agendar consulta y llamar directamente,
+ * además de destacar beneficios clave (respuesta rápida, consulta gratuita, confidencialidad).
+ */
+
 import Link from 'next/link'
 
 export default function CTA() {
@@ -13,7 +21,9 @@ export default function CTA() {
             Contáctenos hoy y reciba una consulta gratuita.
           </p>
           
+          {/* Botones de acción principales */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* Botón para agendar consulta */}
             <Link 
               href="/contacto" 
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-gold-500 text-base font-medium rounded-md text-white bg-gold-500 hover:bg-gold-600 hover:border-gold-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-500 transition-all duration-200"
@@ -23,6 +33,7 @@ export default function CTA() {
               </svg>
               Agendar Consulta
             </Link>
+            {/* Botón para llamar directamente */}
             <Link 
               href="tel:+525512345678" 
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-navy-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all duration-200"
@@ -34,6 +45,7 @@ export default function CTA() {
             </Link>
           </div>
 
+          {/* Grid de beneficios adicionales */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="text-gold-500 mb-2">

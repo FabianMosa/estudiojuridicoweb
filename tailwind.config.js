@@ -1,5 +1,13 @@
+/**
+ * Configuración de Tailwind CSS
+ * 
+ * Define la configuración del framework de utilidades CSS Tailwind.
+ * Personaliza colores corporativos (navy y gold), tipografías y rutas de contenido.
+ */
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // Rutas donde Tailwind debe buscar clases CSS utilizadas
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,7 +15,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Paleta de colores personalizada para el estudio jurídico
       colors: {
+        // Azul marino (color principal corporativo)
         navy: {
           50: '#e6eef5',
           100: '#ccdcea',
@@ -21,6 +31,7 @@ module.exports = {
           900: '#00101e',
           950: '#000a11',
         },
+        // Dorado (color de acento y elegancia)
         gold: {
           50: '#fefbf3',
           100: '#fdf6e7',
@@ -34,9 +45,10 @@ module.exports = {
           900: '#2b230b',
         },
       },
+      // Familias tipográficas personalizadas
       fontFamily: {
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'], // Para títulos elegantes
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'], // Para texto general
       },
     },
   },

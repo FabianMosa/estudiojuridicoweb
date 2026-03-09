@@ -1,6 +1,15 @@
+/**
+ * Componente de Áreas de Práctica
+ * 
+ * Muestra las diferentes áreas de especialización legal del estudio.
+ * Cada área se presenta en una tarjeta interactiva con ícono, título y descripción.
+ * Los usuarios pueden hacer clic para ver más detalles de cada área.
+ */
+
 import Link from 'next/link'
 import { practiceAreas } from '@/data/content'
 
+// Mapeo de íconos SVG para cada área de práctica
 const icons = {
   briefcase: (
     <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,6 +57,7 @@ export default function PracticeAreas() {
           </p>
         </div>
 
+        {/* Grid de tarjetas de áreas de práctica */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {practiceAreas.map((area) => (
             <Link
@@ -76,6 +86,7 @@ export default function PracticeAreas() {
           ))}
         </div>
 
+        {/* Botón para ver todas las áreas */}
         <div className="text-center mt-12">
           <Link href="/areas-practica" className="btn-primary">
             Ver Todas las Áreas

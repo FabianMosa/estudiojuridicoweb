@@ -1,6 +1,15 @@
+/**
+ * Página del Equipo Legal
+ * 
+ * Muestra el equipo completo de abogados del estudio en un grid de tarjetas.
+ * Cada tarjeta es clickeable y lleva al perfil detallado del abogado.
+ * Incluye también un CTA para unirse al equipo.
+ */
+
 import Link from 'next/link'
 import { teamMembers } from '@/data/content'
 
+// Metadatos SEO específicos de esta página
 export const metadata = {
   title: 'Equipo | Estudio Jurídico',
   description: 'Conozca a nuestro equipo de abogados especialistas altamente calificados.',
@@ -9,7 +18,7 @@ export const metadata = {
 export default function Equipo() {
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Sección hero con título */}
       <section className="relative bg-navy-900 text-white py-20">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -23,7 +32,7 @@ export default function Equipo() {
         </div>
       </section>
 
-      {/* Team Grid */}
+      {/* Grid de miembros del equipo con enlaces a perfiles */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -61,7 +70,7 @@ export default function Equipo() {
         </div>
       </section>
 
-      {/* Join Team CTA */}
+      {/* Sección CTA para unirse al equipo */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">

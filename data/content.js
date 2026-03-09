@@ -1,3 +1,15 @@
+/**
+ * Archivo de Contenido Centralizado
+ * 
+ * Contiene todos los datos estáticos del sitio web del estudio jurídico.
+ * Incluye áreas de práctica, miembros del equipo, testimonios y publicaciones del blog.
+ * Centralizar el contenido aquí facilita el mantenimiento y actualización.
+ */
+
+/**
+ * ÁREAS DE PRÁCTICA LEGAL
+ * Lista de todas las especialidades legales que ofrece el estudio
+ */
 export const practiceAreas = [
   {
     slug: 'derecho-corporativo',
@@ -91,6 +103,10 @@ export const practiceAreas = [
   },
 ]
 
+/**
+ * MIEMBROS DEL EQUIPO LEGAL
+ * Información detallada de cada abogado del estudio
+ */
 export const teamMembers = [
   {
     slug: 'juan-martinez',
@@ -104,8 +120,8 @@ export const teamMembers = [
       'Doctorado en Derecho Mercantil - Universidad Complutense de Madrid',
     ],
     publications: [
-      'Fusiones y Adquisiciones en México (2020)',
-      'Gobierno Corporativo: Mejores Prácticas (2018)',
+      'Fusiones y Adquisiciones| Bernardo Morales (2020)',
+      'Gobierno Corporativo| Juan Pérez (2018)',
     ],
     email: 'jmartinez@estudiojuridico.com',
   },
@@ -156,27 +172,23 @@ export const teamMembers = [
   },
 ]
 
+/**
+ * TESTIMONIOS DE CLIENTES
+ * Opiniones y valoraciones de clientes satisfechos
+ */
 export const testimonials = [
   {
     name: 'Roberto Sánchez',
-    company: 'CEO, TechCorp México',
+    company: 'CEO, TechCorp Chile',
     content: 'El equipo del Estudio Jurídico nos guió exitosamente en una adquisición compleja. Su profesionalismo y conocimiento fueron fundamentales.',
     rating: 5,
-  },
-  {
-    name: 'Laura Fernández',
-    company: 'Directora, Constructora del Valle',
-    content: 'Excelente asesoría en todos nuestros contratos corporativos. Siempre disponibles y con respuestas precisas.',
-    rating: 5,
-  },
-  {
-    name: 'Miguel Ángel Torres',
-    company: 'Empresario',
-    content: 'Resolvieron mi caso familiar con gran sensibilidad y profesionalismo. Altamente recomendados.',
-    rating: 5,
-  },
+  }
 ]
 
+/**
+ * PUBLICACIONES DEL BLOG
+ * Artículos legales y análisis de los expertos del estudio
+ */
 export const blogPosts = [
   {
     slug: 'nueva-ley-competencia-2026',

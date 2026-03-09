@@ -1,3 +1,11 @@
+/**
+ * Componente de Testimonios
+ * 
+ * Muestra testimonios de clientes satisfechos con el servicio del estudio.
+ * Cada testimonio incluye calificación por estrellas, comentario y datos del cliente.
+ * Los datos se obtienen del archivo de contenido centralizado.
+ */
+
 import { testimonials } from '@/data/content'
 
 export default function Testimonials() {
@@ -13,13 +21,14 @@ export default function Testimonials() {
           </p>
         </div>
 
+        {/* Grid de tarjetas de testimonios */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
               className="bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Stars */}
+              {/* Estrellas de calificación */}
               <div className="flex mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <svg
@@ -33,12 +42,12 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              {/* Quote */}
+              {/* Texto del testimonio */}
               <p className="text-gray-700 italic mb-6 leading-relaxed">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
 
-              {/* Author */}
+              {/* Información del autor del testimonio */}
               <div className="border-t border-gray-200 pt-4">
                 <p className="font-semibold text-navy-900">{testimonial.name}</p>
                 <p className="text-sm text-gray-600">{testimonial.company}</p>
