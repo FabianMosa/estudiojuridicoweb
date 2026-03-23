@@ -1,5 +1,62 @@
 # AGENTS.md - Historial de Modificaciones del Proyecto
 
+## Fecha: 23 de Marzo de 2026
+
+### Modificación: Implementación de Pruebas Automatizadas
+
+**Objetivo:** Configurar el entorno de testing e implementar pruebas críticas, medias y básicas para el rendimiento de la aplicación, todas incluyendo comentarios analíticos.
+
+---
+
+## Archivos Creados y Modificados
+
+### 1. **Entorno de Pruebas**
+
+#### `jest.config.mjs` (NUEVO)
+- ✅ Creación y configuración base para Jest en Next.js
+- ✅ Soporte para importaciones absolutas a través del alias `@/`
+
+#### `jest.setup.js` (NUEVO)
+- ✅ Instalación de métodos adicionales DOM de Jest (`@testing-library/jest-dom`)
+- ✅ Mocks globales para componentes de enrutamiento Next (`next/navigation`)
+
+#### `package.json`
+- ✅ Implementación de comandos script (`test`, `test:watch`)
+
+---
+
+### 2. **Pruebas Críticas**
+
+#### `__tests__/critical/HomePage.test.jsx` (NUEVO)
+- ✅ Comentarios JSDoc agregados
+- ✅ Constatación de renderización de capas vitales del Home
+- ✅ Verificación de montajes de "Razones para elegirnos" y CTAs
+
+#### `__tests__/critical/Navbar.test.jsx` (NUEVO)
+- ✅ Comentarios exploratorios sobre el propósito de las pruebas
+- ✅ Comprobación de enlaces críticos e interacciones (Menú móvil)
+
+---
+
+### 3. **Pruebas Medias**
+
+#### `__tests__/medium/ContactoForm.test.jsx` (NUEVO)
+- ✅ Comprobación integral de los labels, states e inputs del formulario
+- ✅ Validaciones de evento al hacer 'submit' del formulario de contacto
+
+#### `__tests__/medium/utils.test.js` (NUEVO)
+- ✅ Pruebas sobre constructores globales `cn` y `formatDate`
+
+---
+
+### 4. **Pruebas Básicas**
+
+#### `__tests__/basic/Footer.test.jsx` (NUEVO)
+- ✅ Examen de los sub-bloques puramente estáticos
+- ✅ Verificación del funcionamiento paramétrico de la fecha del sistema (`currentYear`)
+
+---
+
 ## Fecha: 9 de Marzo de 2026
 
 ### Modificación: Documentación Completa del Código
@@ -190,6 +247,12 @@
 
 ## Resumen de Mejoras
 
+### Tipos de Pruebas Implementadas:
+
+1. **Críticas**: Cobertura de la Landing Page principal y flujos de usuario base.
+2. **Medias**: Formularios (contacto), helpers interactivos y utilidades (`cn`, `formatDate`).
+3. **Básicas**: Validaciones estáticas obligatorias y layouts complementarios (Footer).
+
 ### Tipos de Comentarios Agregados:
 
 1. **Encabezados JSDoc**: Todos los archivos principales tienen un encabezado que explica su propósito
@@ -203,8 +266,8 @@
 - ✅ **Mantenibilidad**: Código más fácil de entender para desarrolladores futuros
 - ✅ **Onboarding**: Nuevos desarrolladores pueden comprender el proyecto rápidamente
 - ✅ **Documentación**: Comentarios sirven como documentación inline
-- ✅ **Depuración**: Más fácil identificar el propósito de cada componente
-- ✅ **Estándares**: Código profesional con mejores prácticas
+- ✅ **Fiabilidad**: La suite de pruebas protege contra regresiones visuales y funcionales
+- ✅ **Estándares**: Código profesional con mejores prácticas guiadas por pruebas (`Testing Library`)
 
 ### Archivos Totales Modificados: 23
 
@@ -227,6 +290,6 @@
 
 ---
 
-**Última actualización:** 9 de Marzo de 2026
+**Última actualización:** 23 de Marzo de 2026
 **Versión:** 0.1.0
 **Desarrollador:** Equipo de Desarrollo Web

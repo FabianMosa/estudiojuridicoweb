@@ -13,6 +13,7 @@ Sitio web moderno y profesional para un estudio jurídico, desarrollado con Next
 - ✅ **Diseño Profesional** - Paleta de colores navy y gold
 - ✅ **Accesibilidad** - Cumple con estándares WCAG 2.1 AA
 - ✅ **Código Comentado** - Todos los archivos incluyen comentarios contextuales
+- ✅ **Pruebas Automatizadas** - Tests críticos, medios y básicos con Jest y Testing Library
 
 ## 📋 Páginas Incluidas
 
@@ -28,6 +29,19 @@ Sitio web moderno y profesional para un estudio jurídico, desarrollado con Next
   - Propiedad Intelectual
 - **Blog** - Listado de artículos legales
 - **Contacto** - Formulario completo con validación y mapa
+
+## 🧪 Pruebas Automatizadas
+
+La aplicación cuenta con una suite de pruebas para asegurar su estabilidad:
+
+- **Pruebas Críticas:** Verifican componentes de alto valor como el `Hero` y `Navbar`.
+- **Pruebas Medias:** Validación de interactividad y formularios (`ContactoForm`) sumado a funciones core.
+- **Pruebas Básicas:** Chequeos estáticos para el layout principal y pie de página.
+
+Para ejecutarlas, use:
+```bash
+npm test
+```
 
 ## 🛠️ Tecnologías
 
@@ -59,7 +73,7 @@ npm run dev
 
 Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-## 🏗️ Compilación
+## 🏗️ Compilación y Calidad de Código
 
 ```bash
 # Crear build de producción
@@ -70,6 +84,9 @@ npm start
 
 # Ejecutar linter
 npm run lint
+
+# Ejecutar pruebas automatizadas
+npm test
 ```
 
 ## 📁 Estructura del Proyecto
@@ -106,8 +123,14 @@ estudiojuridicoweb/
 ├── lib/                     # Funciones utilitarias
 │   └── utils.js            # Helpers (formateo de fechas, clases CSS)
 ├── public/                  # Archivos estáticos públicos
+├── __tests__/               # Centro de Pruebas Automatizadas Jest
+│   ├── basic/               # Pruebas de baja prioridad visual
+│   ├── medium/              # Pruebas funcionales e interactivas
+│   └── critical/            # Pruebas críticas de negocio
 ├── tailwind.config.js      # Configuración personalizada de Tailwind
 ├── next.config.js          # Configuración de Next.js
+├── jest.config.mjs         # Configuración del entorno de testing
+├── jest.setup.js           # Mocks y setup de dom global para pruebas
 ├── jsconfig.json           # Alias de importación (@/)
 ├── .eslintrc.json          # Reglas de linting
 └── package.json            # Dependencias y scripts

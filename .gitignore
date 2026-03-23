@@ -12,6 +12,13 @@
 /.next/
 /out/
 
+# Archivos de Cursor AI
+/.cursor
+/.cursorules
+
+# Archivos de AGENTS.md
+AGENTS.md
+
 # Compilación de producción
 /build
 /dist
