@@ -39,22 +39,38 @@ export default function Contacto() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulación de envío del formulario (aquí iría la lógica real de envío)
-    setTimeout(() => {
-      setSubmitMessage('¡Gracias por contactarnos! Le responderemos en breve.')
-      setIsSubmitting(false)
-      setFormData({
-        nombre: '',
-        email: '',
-        telefono: '',
-        asunto: '',
-        mensaje: '',
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       })
 
-      setTimeout(() => {
-        setSubmitMessage('')
-      }, 5000)
-    }, 1000)
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitMessage(data.message)
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          asunto: '',
+          mensaje: '',
+        })
+      } else {
+        setSubmitMessage(
+          'Error: ' + (data.errors || ['Hubo un problema al enviar el formulario']).join(', ')
+        )
+      }
+    } catch (error) {
+      setSubmitMessage('Error de conexión. Intente nuevamente más tarde.')
+    } finally {
+      setIsSubmitting(false)
+    }
+
+    setTimeout(() => {
+      setSubmitMessage('')
+    }, 5000)
   }
 
   return (

@@ -8,13 +8,18 @@
 # Archivos de testing
 /coverage
 
+# Documentación
+/docs
+/docs/plan.md
+/docs/PROCESO_DESARROLLO.md
+
 # Archivos generados por Next.js
 /.next/
 /out/
 
 # Archivos de Cursor AI
 /.cursor
-/.cursorules
+/.cursorrules
 
 # Archivos de AGENTS.md
 AGENTS.md

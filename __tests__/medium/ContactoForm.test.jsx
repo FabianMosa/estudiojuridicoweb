@@ -9,6 +9,15 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import Contacto from '@/app/contacto/page'
 
+// Mock global de fetch para la API de contacto
+beforeEach(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve({ success: true, message: '¡Gracias por contactarnos!' }),
+    })
+  )
+})
+
 describe('Formulario de Contacto (Medium Priority)', () => {
   it('renderiza todos los campos requeridos del formulario', () => {
     render(<Contacto />)
@@ -40,6 +49,7 @@ describe('Formulario de Contacto (Medium Priority)', () => {
     const nameInput = screen.getByLabelText(/Nombre Completo \*/i)
     const emailInput = screen.getByLabelText(/Email \*/i)
     const telInput = screen.getByLabelText(/Teléfono \*/i)
+    const selectAsunto = screen.getByLabelText(/Asunto \*/i)
     const msgInput = screen.getByLabelText(/Mensaje \*/i)
     const submitButton = screen.getByRole('button', { name: /Enviar Mensaje/i })
 
@@ -47,13 +57,16 @@ describe('Formulario de Contacto (Medium Priority)', () => {
     fireEvent.change(nameInput, { target: { value: 'Carlos' } })
     fireEvent.change(emailInput, { target: { value: 'carlos@test.com' } })
     fireEvent.change(telInput, { target: { value: '123456789' } })
-    fireEvent.change(msgInput, { target: { value: 'Consulta legal' } })
+    fireEvent.change(selectAsunto, { target: { value: 'corporativo' } })
+    fireEvent.change(msgInput, { target: { value: 'Consulta legal sobre un caso corporativo' } })
     
-    // Act: Envío
-    fireEvent.submit(submitButton)
+    // Act: Envío — hacer click en el botón (submit real del form)
+    fireEvent.click(submitButton)
     
     // Assert: El botón pasa a estado 'Enviando...'
-    expect(screen.getByRole('button', { name: /Enviando.../i })).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /Enviando.../i })).toBeInTheDocument()
+    })
     expect(submitButton).toBeDisabled()
   })
 })

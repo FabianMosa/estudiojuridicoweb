@@ -169,6 +169,7 @@ export const blogPosts = [
     author: 'Dr. Juan Martínez',
     category: 'Derecho Corporativo',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop',
+    content: 'La nueva Ley de Competencia Económica introduce cambios significativos en el panorama regulatorio mexicano. Entre las reformas más destacadas se encuentran el fortalecimiento de las facultades de la Comisión Federal de Competencia Económica (Cofece), la implementación de nuevos procedimientos sancionadores y la modernización de los criterios para evaluar concentraciones.\n\nUno de los aspectos más relevantes es la incorporación de un régimen de clemencia mejorado, que incentiva a los participantes en prácticas monopólicas a denunciar sus acuerdos a cambio de reducciones sustanciales en las sanciones.\n\nLas empresas deben prepararse para un entorno de mayor escrutinio regulatorio. Recomendamos realizar auditorías internas de cumplimiento en materia de competencia y revisar los contratos de distribución y suministro para asegurar conformidad con la nueva normativa.',
   },
   {
     slug: 'proteccion-datos-personales',
@@ -178,6 +179,7 @@ export const blogPosts = [
     author: 'Lic. Ana García',
     category: 'Derecho Laboral',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop',
+    content: 'La protección de datos personales en el ámbito laboral representa uno de los desafíos más importantes para las empresas modernas. Con la creciente digitalización de los procesos de recursos humanos, es fundamental establecer políticas claras para el tratamiento de la información de los empleados.\n\nPrincipios clave que toda empresa debe implementar:\n\n1. Consentimiento informado: Los empleados deben conocer y autorizar el uso de sus datos personales.\n2. Proporcionalidad: Solo recabar la información estrictamente necesaria para la relación laboral.\n3. Seguridad: Implementar medidas técnicas y organizativas para proteger la información.\n\nLa Ley Federal de Protección de Datos Personales en Posesión de los Particulares establece obligaciones específicas para los empleadores, incluyendo la elaboración de un aviso de privacidad y la designación de un responsable de datos.',
   },
   {
     slug: 'reforma-penal-2026',
@@ -187,5 +189,6 @@ export const blogPosts = [
     author: 'Lic. Carlos Rodríguez',
     category: 'Derecho Penal',
     image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop',
+    content: 'La reciente reforma al Código Penal Federal introduce modificaciones sustanciales al sistema de justicia penal en México. Los cambios buscan agilizar los procesos judiciales, fortalecer los derechos de las víctimas y modernizar los tipos penales existentes.\n\nEntre las modificaciones más destacadas se encuentran:\n\n• La incorporación de nuevos tipos penales relacionados con delitos informáticos y cibernéticos.\n• El endurecimiento de las penas para delitos cometidos contra menores de edad.\n• La simplificación de los procedimientos para la obtención de pruebas digitales.\n• La creación de mecanismos alternativos de solución de controversias más eficientes.\n\nEs fundamental que los profesionales del derecho se mantengan actualizados sobre estas modificaciones para brindar una defensa técnica adecuada y aprovechar las nuevas herramientas procesales que la reforma ofrece.',
   },
 ]

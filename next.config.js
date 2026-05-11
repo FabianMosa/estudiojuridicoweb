@@ -8,11 +8,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Permite cargar imágenes de cualquier dominio (útil para desarrollo)
+    // Dominios específicos permitidos para optimización de imágenes
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'images.unsplash.com',
       },
     ],
   },

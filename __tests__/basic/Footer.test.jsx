@@ -17,7 +17,7 @@ describe('Pie de Página Estático (Footer)', () => {
     
     // Verificamos elementos de contacto
     expect(screen.getByText('contacto@estudiojuridico.com')).toBeInTheDocument()
-    expect(screen.getByText('+56954555444')).toBeInTheDocument()
+    expect(screen.getByText('+56999999999')).toBeInTheDocument()
   })
 
   it('renderiza los enlaces rápidos', () => {
@@ -35,9 +35,8 @@ describe('Pie de Página Estático (Footer)', () => {
     
     render(<Footer />)
     
-    // Usamos una expresión regular para buscar el texto exacto con el año,
-    // o simplemente verificamos que document contenga la cadena unida al año
-    const copyrightText = screen.getByText(new RegExp(`Dev Bernardo Morales © ${currentYear}`))
-    expect(copyrightText).toBeInTheDocument()
+    // Verificamos que el copyright incluya el año actual y el desarrollador
+    expect(screen.getByText(new RegExp(`© ${currentYear}`))).toBeInTheDocument()
+    expect(screen.getByText('Bernardo Morales')).toBeInTheDocument()
   })
 })
