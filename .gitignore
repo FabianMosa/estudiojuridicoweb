@@ -20,9 +20,13 @@
 # Archivos de Cursor AI
 /.cursor
 /.cursorrules
+scripts/
+ai-team/
 
 # Archivos de AGENTS.md
 AGENTS.md
+STACK.md
+STACK_HERO.md
 
 # Compilación de producción
 /build
@@ -73,7 +77,7 @@ next-env.d.ts
 # Archivos temporales
 *.tmp
 *.temp
-.cache/
+.cache/ 
 
-# Documentación
-/docs
+#
+docs

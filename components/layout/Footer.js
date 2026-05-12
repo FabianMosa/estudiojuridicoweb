@@ -7,6 +7,16 @@
  */
 
 import Link from 'next/link'
+import { info_ubicacion } from '@/data/content'
+
+/**
+ * Ruta interna a la sección de ubicación dentro de la página de Contacto.
+ * Centraliza la navegación del Footer hacia la vista que contiene el mapa
+ * interactivo y los accesos rápidos a Google Maps / Waze / Apple Maps.
+ *
+ * @constant {string}
+ */
+const ruta_ubicacion_contacto = '/contacto#ubicacion'
 
 export default function Footer() {
   // Obtiene el año actual dinámicamente
@@ -72,12 +82,14 @@ export default function Footer() {
               Contacto
             </h3>
             <ul className="space-y-3 text-sm">
+              {/* Dirección clickeable: navega a la sección de ubicación en /contacto */}
               <li className="flex items-start">
                 <svg
                   className="w-5 h-5 mr-2 mt-0.5 text-gold-500 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -92,14 +104,27 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>Antofagasta, Chile</span>
+                <Link
+                  href={ruta_ubicacion_contacto}
+                  className="group hover:text-gold-500 transition-colors duration-200"
+                  aria-label={`Ver ubicación del estudio en la página de contacto: ${info_ubicacion.direccion_completa}`}
+                >
+                  <span className="block">
+                    {info_ubicacion.direccion_ciudad},{' '}
+                    {info_ubicacion.direccion_pais}
+                  </span>
+                  <span className="block text-xs text-gold-500/80 mt-0.5 group-hover:text-gold-400">
+                  </span>
+                </Link>
               </li>
+              {/* Teléfono clickeable (tel:) */}
               <li className="flex items-center">
                 <svg
                   className="w-5 h-5 mr-2 text-gold-500 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -108,14 +133,22 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>+56999999999</span>
+                <a
+                  href={`tel:${info_ubicacion.telefono_url}`}
+                  className="hover:text-gold-500 transition-colors duration-200"
+                  aria-label={`Llamar al estudio: ${info_ubicacion.telefono}`}
+                >
+                  {info_ubicacion.telefono}
+                </a>
               </li>
+              {/* Email clickeable (mailto:) */}
               <li className="flex items-center">
                 <svg
                   className="w-5 h-5 mr-2 text-gold-500 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -124,7 +157,12 @@ export default function Footer() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span>contacto@estudiojuridico.com</span>
+                <a
+                  href="mailto:contacto@estudiojuridico.com"
+                  className="hover:text-gold-500 transition-colors duration-200 break-all"
+                >
+                  contacto@estudiojuridico.com
+                </a>
               </li>
             </ul>
           </div>
@@ -134,7 +172,7 @@ export default function Footer() {
         <div className="border-t border-navy-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             {/* Copyright dinámico */}
-            <p>  © {currentYear} Estudio Jurídico. Desarrollado por <a href="https://www.linkedin.com/in/bernardo-morales-848517310/" target="_blank" className="text-gold-500 hover:text-gold-400 transition-colors duration-200">Bernardo Morales</a>. Todos los derechos reservados.</p>
+            <p>  © {currentYear} . Estudio Jurídico. Dev <a href="https://www.linkedin.com/in/bernardo-morales-848517310/" target="_blank" className="text-gold-500 hover:text-gold-400 transition-colors duration-200">Bernardo Morales</a>. Todos los derechos reservados.</p>
 
             {/* Enlaces a políticas legales */}
             {/*

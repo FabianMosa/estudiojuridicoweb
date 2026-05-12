@@ -7,6 +7,7 @@
  */
 
 import Link from 'next/link'
+import { info_ubicacion } from '@/data/content'
 
 export default function CTA() {
   return (
@@ -35,13 +36,14 @@ export default function CTA() {
             </Link>
             {/* Botón para llamar directamente */}
             <Link
-              href="tel:+525512345678"
+              href={`tel:${info_ubicacion.telefono_url}`}
+              aria-label={`Llamar al estudio jurídico al ${info_ubicacion.telefono}`}
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-navy-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all duration-200"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              +56954555444
+              {info_ubicacion.telefono}
             </Link>
           </div>
 
@@ -56,15 +58,7 @@ export default function CTA() {
               <p className="font-medium">Respuesta Rápida</p>
               <p className="text-sm text-gray-400 mt-1">En menos de 24 horas</p>
             </div>
-            <div>
-              <div className="text-gold-500 mb-2">
-                <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <p className="font-medium">Consulta Gratuita</p>
-              <p className="text-sm text-gray-400 mt-1">Sin compromiso</p>
-            </div>
+
             <div>
               <div className="text-gold-500 mb-2">
                 <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">

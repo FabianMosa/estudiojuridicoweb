@@ -28,17 +28,20 @@ Sitio web moderno y profesional para un estudio jurídico, desarrollado con Next
   - Derecho Fiscal
   - Propiedad Intelectual
 - **Blog** - Listado de artículos legales
-- **Contacto** - Formulario completo con validación y mapa
+- **Contacto** - Formulario completo con validación y **sección de ubicación interactiva** (mapa Google Maps + tarjeta de dirección + botones de "Cómo llegar" en Google Maps, Waze y Apple Maps + llamada directa)
 
 ## 🧪 Pruebas Automatizadas
 
 La aplicación cuenta con una suite de pruebas para asegurar su estabilidad:
 
-- **Pruebas Críticas:** Verifican componentes de alto valor como el `Hero` y `Navbar`.
-- **Pruebas Medias:** Validación de interactividad y formularios (`ContactoForm`) sumado a funciones core.
-- **Pruebas Básicas:** Chequeos estáticos para el layout principal y pie de página.
+- **Pruebas Críticas:** Verifican componentes de alto valor como `HomePage` y `Navbar`.
+- **Pruebas Medias:** Validación de interactividad y formularios (`ContactoForm`), sección de `UbicacionMapa` y utilidades (`cn`, `formatDate`).
+- **Pruebas Básicas:** Chequeos estáticos del layout y enlaces accesibles del `Footer` (`tel:`, `mailto:`, ancla a `/contacto#ubicacion`).
+
+> Los archivos de la carpeta `scripts/` están excluidos de Jest mediante `testPathIgnorePatterns` (usan el runner nativo `node:test`).
 
 Para ejecutarlas, use:
+
 ```bash
 npm test
 ```
@@ -117,6 +120,7 @@ estudiojuridicoweb/
 │       ├── Hero.js         # Banner principal con estadísticas
 │       ├── PracticeAreas.js # Tarjetas de áreas de práctica
 │       ├── Testimonials.js # Testimonios de clientes
+│       ├── UbicacionMapa.js # Mapa interactivo + tarjeta de dirección + acciones
 │       └── CTA.js          # Llamado a la acción
 ├── data/                    # Contenido estático centralizado
 │   └── content.js          # Datos de áreas, equipo, testimonios y blog
@@ -124,9 +128,9 @@ estudiojuridicoweb/
 │   └── utils.js            # Helpers (formateo de fechas, clases CSS)
 ├── public/                  # Archivos estáticos públicos
 ├── __tests__/               # Centro de Pruebas Automatizadas Jest
-│   ├── basic/               # Pruebas de baja prioridad visual
-│   ├── medium/              # Pruebas funcionales e interactivas
-│   └── critical/            # Pruebas críticas de negocio
+│   ├── basic/               # Footer (enlaces tel:, mailto:, ancla #ubicacion)
+│   ├── medium/              # ContactoForm, UbicacionMapa, utils
+│   └── critical/            # HomePage y Navbar
 ├── tailwind.config.js      # Configuración personalizada de Tailwind
 ├── next.config.js          # Configuración de Next.js
 ├── jest.config.mjs         # Configuración del entorno de testing
@@ -151,7 +155,7 @@ Todos los archivos del proyecto incluyen comentarios explicativos que describen:
 ```javascript
 /**
  * Componente de Barra de Navegación
- * 
+ *
  * Barra de navegación responsive con menú desplegable para dispositivos móviles.
  * Incluye logo, enlaces de navegación y botón de llamada a la acción.
  * Se mantiene fija en la parte superior al hacer scroll (sticky).
@@ -182,10 +186,14 @@ Todos los archivos del proyecto incluyen comentarios explicativos que describen:
 ### Actualizar Contenido
 
 Edita el archivo `data/content.js` para modificar:
+
 - Áreas de práctica
 - Miembros del equipo
 - Testimonios
 - Artículos del blog
+- **Información de ubicación** (`info_ubicacion`): dirección, coordenadas, horarios, teléfono y referencia visual. Las coordenadas alimentan el mapa de Google Maps y los enlaces a Waze / Apple Maps.
+
+> ⚠️ Recuerda reemplazar los `TODO` marcados en `data/content.js` (`direccion_calle` y `coordenadas`) por los datos reales del estudio para que el mapa apunte al lugar exacto.
 
 ### Cambiar Colores
 
@@ -212,6 +220,7 @@ Crea archivos en el directorio `app/` siguiendo la estructura de App Router de N
 ## 📊 SEO
 
 El sitio incluye:
+
 - Metadata optimizada por página
 - URLs amigables con slugs descriptivos
 - Estructura semántica HTML5

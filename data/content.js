@@ -157,6 +157,66 @@ export const testimonials = [
 ]
 
 /**
+ * INFORMACIÓN DE UBICACIÓN DEL ESTUDIO JURÍDICO
+ *
+ * Fuente única de verdad para la ubicación física, teléfono y email del
+ * estudio. La consumen el Footer, la página de Contacto, el componente
+ * `UbicacionMapa` y el CTA. Cualquier cambio (dirección, número, coordenadas)
+ * se hace SOLO aquí.
+ *
+ * ⚠️ COHERENCIA DIRECCIÓN ↔ COORDENADAS:
+ * `direccion_calle` y `coordenadas` deben actualizarse JUNTAS. Si cambias
+ * la dirección, recalcula las coordenadas en https://www.openstreetmap.org/
+ * o https://maps.google.com/ y pégalas aquí; de lo contrario el pin del
+ * mapa apuntará a un lugar distinto al texto mostrado al usuario.
+ *
+ * TODO (datos del estudio real): reemplazar `direccion_calle`,
+ * `coordenadas.lat`, `coordenadas.lng`, `telefono` y `telefono_url` por
+ * los valores definitivos. Los actuales son aproximaciones sobre
+ * Av. Brasil, Antofagasta, válidas como demo.
+ *
+ * @property {string} nombre_lugar - Nombre comercial mostrado en el marcador
+ * @property {string} direccion_calle - Calle y número del estudio
+ * @property {string} direccion_ciudad - Ciudad
+ * @property {string} direccion_region - Región o estado
+ * @property {string} direccion_pais - País
+ * @property {string} direccion_completa - Dirección formateada en una sola línea
+ * @property {string} referencia - Punto de referencia visual cercano al estudio
+ * @property {{lat:number,lng:number}} coordenadas - Latitud/longitud que debe
+ *   coincidir con `direccion_calle` + `direccion_ciudad`.
+ * @property {string} telefono - Teléfono visible (con espacios) — formato display
+ * @property {string} telefono_url - Mismo teléfono sin espacios para `tel:`
+ * @property {string} email - Correo electrónico de contacto
+ * @property {Array<{dia: string, horario: string}>} horarios - Días y horarios de atención
+ */
+export const info_ubicacion = {
+  nombre_lugar: 'Estudio Jurídico',
+  direccion_calle: 'Av. Brasil 1234, Oficina 802',
+  direccion_ciudad: 'Antofagasta',
+  direccion_region: 'Región de Antofagasta',
+  direccion_pais: 'Chile',
+  direccion_completa:
+    'Av. Brasil 1234, Oficina 802, Antofagasta, Región de Antofagasta, Chile',
+  referencia: 'Edificio Centro Empresarial, a una cuadra de Plaza Colón',
+  // Aproximación sobre Av. Brasil ~1234, Antofagasta (centro comercial,
+  // cerca de Plaza Colón). Refinar al pin exacto del edificio cuando esté
+  // confirmado. Verificado contra OpenStreetMap (Av. Brasil corre paralela
+  // al borde costero entre lat ~-23.640 y ~-23.660).
+  coordenadas: {
+    lat: -23.6512,
+    lng: -70.3989,
+  },
+  telefono: '+56 9 5455 5444',
+  telefono_url: '+56954555444',
+  email: 'contacto@estudiojuridico.com',
+  horarios: [
+    { dia: 'Lunes a Viernes', horario: '9:00 - 19:00' },
+    { dia: 'Sábado', horario: '10:00 - 14:00' },
+    { dia: 'Domingo', horario: 'Cerrado' },
+  ],
+}
+
+/**
  * PUBLICACIONES DEL BLOG
  * Artículos legales y análisis de los expertos del estudio
  */

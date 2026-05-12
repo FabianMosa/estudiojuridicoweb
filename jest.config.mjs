@@ -19,6 +19,14 @@ const config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
   },
+
+  // Ignorar tests que usan el runner nativo `node:test` (carpeta `scripts/`),
+  // ya que se ejecutan por separado mediante `npm run secdevops:selftest`.
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/.next/',
+    '<rootDir>/scripts/',
+  ],
 };
 
 // createJestConfig exporta la configuración de una forma asíncrona validada por Next.js
