@@ -28,7 +28,7 @@ Sitio web moderno y profesional para un estudio jurídico, desarrollado con Next
   - Derecho Fiscal
   - Propiedad Intelectual
 - **Blog** - Listado de artículos legales
-- **Contacto** - Formulario completo con validación y **sección de ubicación interactiva** (mapa Google Maps + tarjeta de dirección + botones de "Cómo llegar" en Google Maps, Waze y Apple Maps + llamada directa)
+- **Contacto** - Formulario completo con validación y **sección de ubicación interactiva** (mapa Leaflet + OpenStreetMap, tarjeta de dirección, botones de "Cómo llegar" en Google Maps, Waze y Apple Maps, y llamada directa)
 
 ## 🧪 Pruebas Automatizadas
 
@@ -48,7 +48,7 @@ npm test
 
 ## 🛠️ Tecnologías
 
-- **Framework:** Next.js 15.1.6
+- **Framework:** Next.js 15.5.18
 - **UI:** React 19
 - **Estilos:** Tailwind CSS 3.4.17
 - **Utilidades:** clsx, tailwind-merge
@@ -90,6 +90,18 @@ npm run lint
 
 # Ejecutar pruebas automatizadas
 npm test
+```
+
+## 🔐 Seguridad y Dependencias
+
+- **Next.js:** actualizado a `15.5.18`, backport de seguridad de la rama 15.x para cerrar advisories reportados por Snyk en versiones anteriores.
+- **PostCSS:** fijado con `overrides` a `^8.5.15` para evitar copias transitivas vulnerables dentro del árbol de dependencias.
+- **Leaflet:** Snyk reporta `SNYK-JS-LEAFLET-16427276` / `CVE-2025-69993` para apps que pasan strings HTML no confiables a `bindPopup()` o APIs equivalentes. Este proyecto usa `react-leaflet` con `<Popup>` y nodos React escapados, alimentados por `info_ubicacion` estático. La exclusión se documenta en `.snyk` y vence el `2026-08-22`.
+
+Para revisar el estado local:
+
+```bash
+npm audit
 ```
 
 ## 📁 Estructura del Proyecto
@@ -137,6 +149,7 @@ estudiojuridicoweb/
 ├── jest.setup.js           # Mocks y setup de dom global para pruebas
 ├── jsconfig.json           # Alias de importación (@/)
 ├── .eslintrc.json          # Reglas de linting
+├── .snyk                   # Política Snyk para falsos positivos justificados
 └── package.json            # Dependencias y scripts
 ```
 

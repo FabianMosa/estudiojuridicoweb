@@ -1,0 +1,15 @@
+version: v1.25.0
+ignore:
+  SNYK-JS-LEAFLET-16427276:
+    - leaflet:
+        reason: >-
+          CVE-2025-69993 applies when applications pass attacker-controlled
+          HTML strings to Leaflet popup APIs such as bindPopup(), bindTooltip()
+          or setContent(). This project renders the map popup through
+          react-leaflet's <Popup> using React nodes and static text from
+          data/content.js (info_ubicacion). React escapes the text and no
+          user-controlled HTML string is passed to Leaflet. If future changes
+          introduce user-editable popup content, remove this ignore and sanitize
+          the input or build DOM nodes with textContent.
+        expires: 2026-08-22T00:00:00.000Z
+        created: 2026-05-22T00:00:00.000Z

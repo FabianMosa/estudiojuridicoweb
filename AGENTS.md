@@ -1,5 +1,105 @@
 # AGENTS.md - Historial de Modificaciones del Proyecto
 
+## Fecha: 22 de Mayo de 2026
+
+### Modificación: Remediación de vulnerabilidades Snyk (`next`, `postcss`, `leaflet`)
+
+**Objetivo:** Resolver las vulnerabilidades reportadas por Snyk/npm audit sin introducir un salto mayor de framework y documentar el falso positivo operativo de Leaflet.
+
+---
+
+#### Archivos modificados y creados
+
+##### `package.json` / `package-lock.json`
+- ✅ `next` actualizado a `^15.5.18` (backport seguro de Next 15; evita saltar a Next 16).
+- ✅ `eslint-config-next` actualizado a `^15.5.18` para mantener consistencia con el framework.
+- ✅ `postcss` actualizado a `^8.5.15`.
+- ✅ Agregado `overrides.postcss = ^8.5.15` para forzar una versión segura también en copias transitivas (incluida la que npm audit detectaba bajo `next/node_modules/postcss`).
+- ✅ `npm audit` local queda en **0 vulnerabilidades**.
+
+##### `.snyk` (NUEVO)
+- ✅ Agregada política para `SNYK-JS-LEAFLET-16427276` / `CVE-2025-69993`.
+- ✅ La exclusión tiene vencimiento (`2026-08-22`) y justificación técnica.
+- ✅ Motivo: el CVE aplica cuando la aplicación entrega strings HTML no confiables a `bindPopup()` / `bindTooltip()` / `setContent()`. Este proyecto renderiza `<Popup>` con nodos React y textos estáticos desde `info_ubicacion`; React escapa el contenido.
+
+##### `components/sections/MapaLeaflet.js`
+- ✅ Añadido bloque de seguridad en el JSDoc del componente.
+- ✅ Documentado que no se debe reemplazar `<Popup>` por `bindPopup(user_input)` ni por strings HTML sin sanitización.
+- ✅ Comentario junto a `<Popup>` indicando que el patrón actual mitiga CVE-2025-69993.
+
+##### `README.md`
+- ✅ Versión de Next.js actualizada a `15.5.18`.
+- ✅ Descripción de Contacto corregida: el mapa es Leaflet + OpenStreetMap, no Google Maps embed.
+- ✅ Nueva sección "Seguridad y Dependencias" con instrucciones de `npm audit`, explicación de Next/PostCSS y justificación de Leaflet.
+- ✅ Árbol del proyecto actualizado con `.snyk`.
+
+---
+
+#### Resumen técnico
+
+- **Next.js:** vulnerabilidades de la rama previa resueltas actualizando a `15.5.18`.
+- **PostCSS:** vulnerabilidad transitiva cerrada mediante `overrides`.
+- **Leaflet:** no hay versión fija en npm (`latest` sigue en `1.9.4`); se mantiene la dependencia y se documenta el uso seguro actual.
+- **Validación local:** `npm audit` retorna 0 vulnerabilidades antes de ejecutar pruebas/build.
+
+---
+
+## Fecha: 12 de Mayo de 2026 (tarde · tests)
+
+### Modificación: Actualización de la suite de pruebas Jest
+
+**Objetivo:** Sincronizar las pruebas con los cambios recientes del `Footer`, la página de Contacto y el nuevo componente `UbicacionMapa`. Separar definitivamente los tests de Jest de los del runner nativo `node:test` (usados por `scripts/`) y excluir de la suite todo lo que `.gitignore` deja fuera del repositorio (`scripts/`, archivos generados, etc.).
+
+---
+
+#### Archivos modificados y creados
+
+##### `jest.config.mjs`
+- ✅ Añadido `testPathIgnorePatterns`: `/node_modules/`, `/.next/`, `<rootDir>/scripts/`.
+- ✅ Elimina el falso fallo *"Your test suite must contain at least one test"* cuando Jest descubría `scripts/security-tool-middleware.test.mjs` (que usa `node:test`).
+- ✅ Refuerza la separación entre suites: Jest cubre la app (`__tests__/`), `npm run secdevops:selftest` cubre la política técnica con `node:test`.
+
+##### `__tests__/basic/Footer.test.jsx`
+- ✅ Reescrito para cubrir el nuevo Footer interactivo.
+- ✅ Verifica que el teléfono se renderiza como `<a href="tel:${info_ubicacion.telefono_url}">` con el texto legible centralizado.
+- ✅ Verifica que el email se renderiza como `<a href="mailto:contacto@estudiojuridico.com">`.
+- ✅ Verifica que la dirección es un enlace a `/contacto#ubicacion` mostrando ciudad y país desde `info_ubicacion`.
+- ✅ Mantiene los chequeos previos de copyright dinámico y branding.
+- ✅ Helper `ruta_ubicacion_esperada` documentado con JSDoc (snake_case).
+
+##### `__tests__/medium/UbicacionMapa.test.jsx` (NUEVO)
+- ✅ 9 tests dedicados al nuevo componente `UbicacionMapa`.
+- ✅ Verifica encabezado, dirección, referencia y listado completo de horarios.
+- ✅ Comprueba los enlaces de **Google Maps**, **Waze** y **Apple Maps** con URLs exactas y atributos `target="_blank"` / `rel="noopener noreferrer"`.
+- ✅ Comprueba el botón de llamada directa `tel:` apuntando a `info_ubicacion.telefono_url`.
+- ✅ Verifica que la sección expone `id="ubicacion"` (ancla usada por el Footer).
+- ✅ Helpers `construir_url_google_esperada`, `construir_url_waze_esperada`, `construir_url_apple_maps_esperada` con JSDoc (snake_case).
+- ✅ Aprovecha el mock global de `next/dynamic` en `jest.setup.js` → Leaflet no se ejecuta en jsdom.
+
+##### `__tests__/medium/ContactoForm.test.jsx`
+- ✅ Mockea `@/components/sections/UbicacionMapa` con `jest.mock` para acotar la prueba al formulario.
+- ✅ Nuevo test: el placeholder del campo Teléfono proviene de `info_ubicacion.telefono`.
+- ✅ Nuevo test: la sección `UbicacionMapa` se monta dentro de la página de Contacto.
+- ✅ Variables del test renombradas a snake_case (`input_nombre`, `input_email`, `boton_envio`, etc.).
+
+##### `README.md`
+- ✅ Sección *Pruebas Automatizadas* actualizada con la nueva distribución (`HomePage`/`Navbar`, `ContactoForm`/`UbicacionMapa`/utils, `Footer`).
+- ✅ Aviso sobre `testPathIgnorePatterns` y la convivencia con `npm run secdevops:selftest`.
+- ✅ Árbol de directorios `__tests__/` actualizado.
+
+---
+
+#### Resumen técnico
+
+- **Antes:** 5 suites / 16 tests + 1 suite falsa fallida por choque de runners.
+- **Ahora:** **6 suites / 30 tests** en verde (`npm test` → exit 0).
+- **Sin dependencias nuevas**.
+- **Sin tocar el código de producción**: solo configuración de Jest, tests y documentación.
+- **Compatibilidad** preservada con `npm run secdevops:selftest` (TAP del middleware sigue funcionando).
+- **Convenciones del proyecto** respetadas: snake_case en variables/helpers de tests, JSDoc en cada función nueva, archivos `.gitignore` (como `scripts/`) excluidos también del descubrimiento de Jest.
+
+---
+
 ## Fecha: 12 de Mayo de 2026 (tarde · cleanup)
 
 ### Modificación: Teléfono único + coherencia mapa↔dirección

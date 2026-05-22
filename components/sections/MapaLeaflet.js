@@ -18,6 +18,15 @@
  *   - Fix del bug clásico del icono por defecto roto con bundlers Webpack/Turbopack.
  *   - Wheel zoom desactivado por defecto para mejor UX en scroll de páginas largas.
  *
+ * Seguridad:
+ *   - Snyk reporta CVE-2025-69993 / SNYK-JS-LEAFLET-16427276 para Leaflet
+ *     <= 1.9.4 cuando una app pasa strings no confiables a `bindPopup()`.
+ *   - Este componente NO usa `bindPopup()` con HTML string. Renderiza `<Popup>`
+ *     con nodos React y textos escapados automáticamente por React.
+ *   - No reemplazar este patrón por `bindPopup(user_input)` ni por strings HTML
+ *     sin sanitización. Si en el futuro el popup recibe contenido editable por
+ *     usuarios, sanitizarlo primero o construir nodos DOM con `textContent`.
+ *
  * @returns {JSX.Element} Mapa Leaflet ocupando el 100% del contenedor padre.
  */
 
@@ -75,6 +84,8 @@ export default function MapaLeaflet() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={posicion}>
+        {/* Patrón seguro frente a CVE-2025-69993: React escapa estos textos y
+            no se entrega HTML string no confiable a Leaflet/bindPopup. */}
         <Popup>
           <div className="text-sm">
             <strong className="block text-navy-900 mb-1">
