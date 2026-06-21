@@ -22,11 +22,14 @@
 .cursorrules
 scripts/
 ai-team/
+docs
+.snyk
+
 
 # Archivos de AGENTS.md
-/AGENTS.md
-/STACK.md
-/STACK_HERO.md
+AGENTS.md
+STACK.md
+STACK_HERE.md
 
 # Compilación de producción
 /build
