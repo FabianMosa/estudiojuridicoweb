@@ -18,15 +18,15 @@
 /out/
 
 # Archivos de Cursor AI
-/.cursor
-/.cursorrules
+.cursor
+.cursorrules
 scripts/
-ai-teamlices/
+ai-team/
 
 # Archivos de AGENTS.md
-AGENTS.md
-STACK.md
-STACK_HERO.md
+/AGENTS.md
+/STACK.md
+/STACK_HERO.md
 
 # Compilación de producción
 /build
