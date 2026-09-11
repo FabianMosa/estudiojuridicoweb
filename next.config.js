@@ -7,6 +7,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
     // Dominios específicos permitidos para optimización de imágenes
     remotePatterns: [
