@@ -172,7 +172,7 @@ export default function Footer() {
         <div className="border-t border-navy-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             {/* Copyright dinámico */}
-            <p>  © {currentYear} . Estudio Jurídico. Dev <a href="https://www.linkedin.com/in/bernardo-morales-848517310/" target="_blank" className="text-gold-500 hover:text-gold-400 transition-colors duration-200">Bernardo Morales</a>. Todos los derechos reservados.</p>
+            <p>  © {currentYear} . Estudio Jurídico. Dev <a href="https://portfolio.aux8n.online/" target="_blank" className="text-gold-500 hover:text-gold-400 transition-colors duration-200">Bernardo Morales</a>. Todos los derechos reservados.</p>
 
             {/* Enlaces a políticas legales */}
             {/*
